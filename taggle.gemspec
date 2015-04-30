@@ -8,5 +8,5 @@ Gem::Specification.new do |s|
   s.email = 'dermusikman@gmail.com'
   s.files = ['lib/taggle.rb']
   s.homepage = 'https://www.github.com/dermusikman/taggle'
-  s.license = 'GPLv3'
+  s.license = 'AGPL'
 end
