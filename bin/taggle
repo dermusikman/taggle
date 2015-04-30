@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+# Licensed under GPLv3
+require 'bundler/setup'
+require_relative "../lib/taggle"
+
+clock = Taggle.new
+clock.parse_options
+
+conf = clock.config
+
+if conf[:report]
+  clock.report(conf[:log_file])
+  exit 0
+end
+
+clock.clock_in(clock.cli_arguments.join(' '), conf[:log_file])
