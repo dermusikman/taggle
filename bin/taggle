@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 # Licensed under GPLv3
-require 'bundler/setup'
 require_relative "../lib/taggle"
 
 clock = Taggle.new
