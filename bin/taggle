@@ -12,4 +12,8 @@ if conf[:report]
   exit 0
 end
 
-clock.clock_in(clock.cli_arguments.join(' '), conf[:log_file])
+if ARGV.empty?
+  clock.swap_in(conf[:log_file])
+else
+  clock.clock_in(clock.cli_arguments.join(' '), conf[:log_file])
+end

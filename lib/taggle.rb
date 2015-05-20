@@ -36,11 +36,22 @@ class Taggle
     end
   end
 
+  def swap_in(file)
+    f = File.open(file, File::RDONLY).read
+    last_task = f.split("\n").last.split(FS)[1]
+    case prompt "You'd like to switch to task '#{last_task}'?"
+    when %r([Yy][Ee]?[Ss]?)
+      clock_in last_task, file
+    else
+      puts "Call '#{ARGV[0]} --help' for full options"
+    end
+  end
+
   def report(file)
     time_hash = {}
     times = File.read(file).split("\n")
     abort "#{file} is empty" if times.empty?
-    times << Time.now.to_s + "✋ENDING"
+    times << Time.now.to_s + "#{FS}ENDING"
     times.each_cons(2) do |t|
       # t = ["<timestamp0>FS<msg0>","<timestamp1>FS<msg1>"]
       msg = t[0].split(FS)[1]
@@ -84,5 +95,11 @@ class Taggle
     end
     # Get seconds
     time += sec_i.to_s.rjust(2,'0') + "s"
+  end
+
+  def prompt(msg)
+    puts msg
+    STDIN.flush
+    STDIN.gets.strip
   end
 end
