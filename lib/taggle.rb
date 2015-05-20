@@ -38,7 +38,7 @@ class Taggle
 
   def swap_in(file)
     f = File.open(file, File::RDONLY).read
-    last_task = f.split("\n").last.split(FS)[1]
+    last_task = f.split("\n")[-2].split(FS)[1]
     case prompt "You'd like to switch to task '#{last_task}'?"
     when %r([Yy][Ee]?[Ss]?)
       clock_in last_task, file

@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'taggle'
-  s.version = '0.2.0'
+  s.version = '0.2.1'
   s.date = '2015-05-20'
   s.summary = 'Taggle: tag/toggle time track'
   s.description = 'A simple time tracker, which "tags" a timestamp with a simple message and reports the delta in a human-readable format.'
